@@ -1,0 +1,132 @@
+@charset "utf-8";
+/*------------------------------------------------
+Basic Style Sheet created on 2011-10-20
+version: 1.0
+author: Jeffer Xia
+email: xzf3201@gmail.com
+website: http://www.guang.com/
+------------------------------------------------*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,
+dl, dt, dd, ul, ol, li,
+pre, 
+form, fieldset, legend, button, input, textarea, 
+th, td {margin: 0;padding: 0;}
+body,
+button, input, select, textarea {font: 12px Arial,Helvetica,sans-serif; color:#666666}
+h1, h2, h3, h4, h5, h6 { font-size:100%; color:#333;}
+address, cite, dfn, em, var { font-style: normal; } 
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } 
+small { font-size: 12px; }
+ul, ol,li { list-style: none; }
+a { color:#666666;text-decoration:none; } 
+a:hover { text-decoration: underline; }
+sup { vertical-align: text-top; }
+sub { vertical-align: text-bottom; }
+legend { color: #000; }
+fieldset, img { border: 0; }
+button, input, select, textarea { font-size: 100%; } 
+table { border-collapse: collapse; border-spacing: 0; border:none }
+/*table tr{ border-bottom:1px solid #CFCCBE }*/
+article, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section,
+summary, time, mark, audio, video{display: block;margin: 0;padding: 0;}
+mark{background: #ff0;}
+object,embed { outline:none;}
+p{line-height:1.6;color:#666;}
+/*圆角设置*/
+.r3{-moz-border-radius:3px;-khtml-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+.r5{-moz-border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+.r10{-moz-border-radius:10px;-khtml-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
+.r10{-moz-border-radius:15px;-khtml-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;}
+.rt3{-moz-border-radius:3px 3px 0 0;-khtml-border-radius:3px 3px 0 0;-webkit-border-radius:3px 3px 0 0;border-radius:3px 3px 0 0;}
+.rt5{-moz-border-radius:5px 5px 0 0;-khtml-border-radius:5px 5px 0 0;-webkit-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;}
+.rt10{-moz-border-radius:10px 10px 0 0;-khtml-border-radius:10px 10px 0 0;-webkit-border-radius:10px 10px 0 0;border-radius:10px 10px 0 0;}
+.rb3{-moz-border-radius:0 0 3px 3px;-khtml-border-radius:0 0 3px 3px;-webkit-border-radius:0 0 3px 3px;border-radius:0 0 3px 3px;}
+.rb5{-moz-border-radius:0 0 5px 5px;-khtml-border-radius:0 0 5px 5px;-webkit-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px;}
+.rb10{-moz-border-radius:0 0 10px 10px;-khtml-border-radius:0 0 10px 10px;-webkit-border-radius:0 0 10px 10px;border-radius:0 0 10px 10px;}
+.rl3{-moz-border-radius:3px 0 0 3px;-khtml-border-radius:3px 0 0 3px;-webkit-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
+.rl5{-moz-border-radius:5px 0 0 5px;-khtml-border-radius:5px 0 0 5px;-webkit-border-radius:5px 0 0 5px;border-radius:5px 0 0 5px;}
+.rl10{-moz-border-radius:10px 0 0 10px;-khtml-border-radius:10px 0 0 10px;-webkit-border-radius:10px 0 0 10px;border-radius:10px 0 0 10px;}
+.rr3{-moz-border-radius:0 3px 3px 0;-khtml-border-radius:0 3px 3px 0;-webkit-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
+.rr5{-moz-border-radius:0 5px 5px 0;-khtml-border-radius:0 5px 5px 0;-webkit-border-radius:0 5px 5px 0;border-radius:0 5px 5px 0;}
+.rr10{-moz-border-radius:0 10px 10px 0;-khtml-border-radius:0 10px 10px 0;-webkit-border-radius:0 10px 10px 0;border-radius:0 10px 10px 0;}
+
+.fl{float:left;display:inline;}.fr{float:right;display:inline;}
+/*margin设置*/
+.mt0{margin-top:0;}.mt5{margin-top:5px;_margin-top:0px;}.mt10{margin-top:10px;}
+.mt15{margin-top:15px;}.mt20{margin-top:20px;}.mt25{margin-top:25px;}.mt30{margin-top:30px;}.mt35{margin-top:35px;}.mt40{margin-top:40px;}
+.mr0{margin-right:0;}.mr5{margin-right:5px;}.mr10{margin-right:10px;}.mr15{margin-right:15px;}.mr20{margin-right:20px;}.mr25{margin-right:25px;}.mr30{margin-right:30px;}.mr35{margin-right:35px;}.mr40{margin-right:40px;}
+.mb0{margin-bottom:0;}.mb5{margin-bottom:5px;}.mb10{margin-bottom:10px;}.mb15{margin-bottom:15px;}.mb20{margin-bottom:20px;}.mb25{margin-bottom:25px;}.mb30{margin-bottom:30px;}.mb35{margin-bottom:35px;}
+.ml0{margin-left:0;}.ml5{margin-left:5px;}.ml10{margin-left:10px;}.ml15{margin-left:15px;}.ml20{margin-left:20px;}.ml25{margin-left:25px;}.ml30{margin-left:30px;}.ml35{margin-left:35px;}.ml40{margin-left:40px;}.mlr5{margin:0 5px 0 5px;}.mlr10{margin:0 10px 0 10px;}
+/*padding设置*/
+.pt0{padding-top:0;}.pt5{padding-top:5px;}.pt10{padding-top:10px;}.pt15{padding-top:15px;}.pt20{padding-top:20px;}.pt25{padding-top:25px;}.pt30{padding-top:30px;}.pt40{padding-top:40px;}
+.pr0{padding-right:0;}.pr5{padding-right:5px;}.pr10{padding-right:10px;}.pr15{padding-right:15px;}.pr20{padding-right:20px;}.pr25{padding-right:25px;}.pr30{padding-right:30px;}.pr35{padding-right:35px;}.pr40{padding-right:40px;}
+.pb0{padding-bottom:0;}.pb5{padding-bottom:5px;}.pb10{padding-bottom:10px;}.pb15{padding-bottom:15px;}.pb20{padding-bottom:20px;}.pb25{padding-bottom:25px;}.pb30{padding-bottom:30px;}.pb35{padding-bottom:35px;}
+.pl0{padding-left:0;}.pl5{padding-left:5px;}.pl10{padding-left:10px;}.pl15{padding-left:15px;}.pl20{padding-left:20px;}.pl25{padding-left:25px;}.pl30{padding-left:30px;}.pl35{padding-left:35px;}.pl40{padding-left:40px;}
+.plr10{padding:0 10px;}
+.pd10{ padding:10px;}.pd20{ padding:20px;}.pd40{ padding:40px;}
+.rc{color:#ee2266;}.bc{color:#55aadd;}.yc{color:#ee6633;}.gc{color:#999;}.gc6{color:#666;}.gcc{color:#ccc;}
+/*浮动和溢出清除设置*/
+.ofh{white-space:nowrap;word-wrap:normal;word-break:normal;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow:hidden;}.clr{clear:both;}.clear_in{overflow:hidden;zoom:1;}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:".";clear:both;height:0;overflow:hidden;}
+.clearfix{*zoom:1;}
+.clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
+.inlineblock{display:inline-block;zoom:1;*display:inline;overflow:hidden;}
+.bigfs{font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;}
+/*字体大小*/
+.fs12{ font-size:12px;}
+.fs14{ font-size:14px;}
+.fs16{ font-size:16px;}
+.fs18{ font-size:18px;}
+.fs17{ font-size:17px;}
+.fs20{ font-size:20px;}
+.fs22{ font-size:22px;}
+.fs24{ font-size:24px;}
+.fs26{ font-size:26px;}
+.fs30{ font-size:30px;}
+.tac{ text-align:center;}
+.tar{ text-align:right;}
+.dn{ display:none;}
+/*文字行高*/
+.lh30{ line-height:30px;}.lh10{ line-height:10px;}.lh20{ line-height:20px;}.lh40{ line-height:40px;}
+/*字体粗细*/
+.fw100{ font-weight:100}
+.fw200{ font-weight:200}
+.fw300{ font-weight:300}
+.fw400{ font-weight:400}
+.fw500{ font-weight:500}
+.fw600{ font-weight:600}
+.fw700{ font-weight:700}
+.fw800{ font-weight:800}
+.center{ text-align:center}
+.right{ text-align:right}
+.left{ text-align:left}
+/*字体颜色*/
+.bai{ color:#fff}.hei{ color:#000}.ju{color:#E6781B}.green{color:#579E34}.hui{color:#666}
+.lan{ color:#0066CC}.huang{ color:#F19018}.red{ color:red;}.fenhong{ color:#CC00CC}
+.gray{color:#aaaaaa}.gray-a{color:#aaaaaa}
+.black{color:#000}
+.orange{color:#F90}
+.blue{color:#09C}
+
+
+.box15{width:15px; height:15px;}
+.box20{width:20px; height:20px;}
+.box30{width:30px; height:30px;}
+.bg_hui{ background:#A1957F}
+.bg_red{ background:#F00}
+.bg_green{ background:#579E34}
+.bg_green1{ background:#E3FCE3}
+.bg_wrong{ background:#F2DEDE}
+.bg_juhuang{ background:#FF9900}
+.bg_huang{ background:#FFFF00}
+.bg_blue{ background:#45DDD1}
+.bg_fh{ background:#DE6CDD}
+/*横线条样式*/
+.dline{border:none;border-bottom:1px dashed #BFBFBF;}
+.line{border:none;border-bottom:1px solid #BFBFBF;}
+.lh50{ line-height:50px;}
+.lh70{ line-height:70px;}
+.bang_check{ height:50px; line-height:50px; font-size:14px;}
+.bang_check input{ vertical-align:middle }
+
+
