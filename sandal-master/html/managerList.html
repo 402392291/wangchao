@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" />  
+		<meta name="screen-orientation" content="portrait">
+    	<meta name="x5-orientation" content="portrait">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>管理员管理</title>
+		<link rel="stylesheet" type="text/css" href="../css/mbase.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css" >
+		<script type="text/javascript" src="../js/jquery-2.1.1.min.js" ></script>
+		<script type="text/javascript" src="../js/iscroll.js" ></script>
+		<script type="text/javascript" src="../js/mobileCommon.js" ></script>
+		<script type="text/javascript" src="../js/rem.js"></script>
+		<script type="text/javascript">
+			var agentCode = getQueryString("agentCode");
+		</script>
+	</head>
+
+	<body>
+		<article class="content">
+			<article>
+				<article class="xz_top">
+					<nav class="xz_top_nav">
+						<li class="selected">我的管理员</li>
+						<li style="margin-left: 2.5rem;">申请的管理员</li>
+					</nav>
+				</article>
+				<article style="margin-top: 4rem;">
+					<section id="onePage" style="width:100%;height:100%;position:absolute;top:4rem;left:0px;overflow:hidden;">
+						<section>
+								<nav class="d_czkh_list" id="managerListMy">
+								</nav>
+						</section>
+					</section>
+					<section id="twoPage" style="width:100%;height:100%;position:absolute;top:4rem;left:0px;overflow:hidden;display: none;">
+						<section>
+		  					<div>
+								<nav class="d_czkh_list" id="managerListShen">
+								</nav>
+							</div>
+						</section>
+					</section>
+				</article>				
+			</article>
+			<article class="backBg"></article>
+			<article class="win_prompt">
+				<section class="win_prompt_text">是否禁用此管理员？</section>
+				<section class="win_prompt_btn">
+					<a class="cancel">取消</a><a class="confirm">确认</a>
+				</section>
+			</article>
+		</article>
+		<script type="text/javascript" src="../js/manager/manager.js"></script>
+	  	<script type="text/javascript">
+	  	var pageNo = 1;//当前第几页
+	  	var pageSize = 8;//每页记录数
+	  	var isLast = false;//是否是最后，false=不是最后页，true=是最后页
+  		var isLoading = true;//上次加载已完成
+	  	
+	  	//加载更多,需要iscroll.js
+	  	var oneScroll_refresh = new iScroll('onePage', {
+	  		useTransition: true,
+	  		onScrollEnd: function () {	
+	  			if(!isLast && isLoading){//没有到最后一页时加载
+	  	   			isLoading = false;
+	  	   			getManagerListMy();
+	  	   		}
+	  		}
+	  	});
+	  	$(function() {
+	  		$('.xz_top_nav li').bind('click',function(){
+	  			$(this).addClass('selected').siblings().removeClass('selected');
+	  			$('.d_czkh_list').eq($('.xz_top_nav li').index(this)).show().siblings('.d_czkh_list').hide();
+	  		});
+	  		$('.jy_btn').bind('click',function(){
+	  			$('.win_prompt,.backBg').show();
+	  		});
+	  		$('.win_prompt .cancel').bind('click',function(){
+	  			$('.win_prompt,.backBg').hide();
+	  		});
+	  		$('.win_prompt .confirm').bind('click',function(){
+	  			$('.win_prompt,.backBg').hide();
+	  		});
+	  		getManagerListMy();
+	  	});
+	  	//获取我的管理员列表动态数据
+	  	function getManagerListMy(){
+	  		$.ajax({
+	  	      type : "GET",
+	  	      url : ctx+ "agent/manager/managerListMy?agentCode="+agentCode+"&pageNo="+pageNo+"&pageSize="+pageSize,
+	  	      dateType : "jsonp",
+	  	      success : function(dataJson) {
+		  	    	var res = dataJson;
+			        if (res.code == -1){//获取数据失败
+			          return;
+			        }
+		  	  		//成功,列表
+		  	  		var accountProfileMap = res.result.accountProfileMap;
+		  	  		
+			        var itemList = res.result.page.result;
+			        var totalPages = 1;//总页数
+			        if(null!=itemList && itemList.length>0){
+			        	totalPages = res.result.page.totalPages;//总页数
+			        	var html = "";
+			        	for(var i=0;i<itemList.length;i++){
+			        		var manager = itemList[i];
+			        		managerObj.managerId = manager.managerId;
+			        		managerObj.agentCode = manager.agentCode;
+			        		managerObj.zmId = manager.zmId;
+			        		managerObj.managerType = manager.managerType;
+			        		managerObj.status = manager.status;
+			        		
+			        		if(null!=accountProfileMap){
+				        		if(manager.zmId in accountProfileMap){//是否存在
+				        			var accountProfile = accountProfileMap[manager.zmId];
+				        			if(null!=accountProfile){
+				        				managerObj.name = accountProfile.name;
+				        				managerObj.logo = accountProfile.logo;
+				        				managerObj.mobile = accountProfile.mobile;
+				        				if(null==managerObj.mobile || ''==managerObj.mobile || "undefined"==managerObj.mobile){
+				        					managerObj.mobile = manager.managerId;
+				        				}
+				        			}
+				        		}
+			        		}
+			        		
+			        		html += getManagerListMyHtml(managerObj);
+			        	}
+		        		$("#managerListMy").append(html);
+			        }
+			        oneScroll_refresh.refresh();//滚动条刷新
+			        
+			        //是否到底
+			        if(pageNo==totalPages){
+			        	isLast = true;
+			        }else{
+			        	pageNo = pageNo+1;
+			        }
+			        isLoading = true;
+	  	      },
+	  	      error : function(data) {	 
+	  	    	  $("#messageLoading").fadeOut();
+	  	  		  $("#message h2").html("发布失败");
+	  	  		  $("#message").fadeIn().fadeOut(3000);
+	  	  		  aObj.html("发布").attr("onclick","checkVoteForm(this);");//onclick="checkVoteForm(this);"
+	  	      }
+	  	});
+	  	}
+	  	</script>
+	</body>
+</html>

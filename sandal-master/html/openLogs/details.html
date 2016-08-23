@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />  
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>已开通的直播列表</title>
+	<link rel="stylesheet" type="text/css" href="/statics/css/mbase.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/promotion/liveDetail.css" />
+	<script type="text/javascript" src="/statics/js/rem750.js"></script>
+</head>
+<body>
+	<div class="alreadyZbh">
+		<article class="zbh_state" style="margin-bottom: 0.2rem;">
+			<nav class="zbh_name">
+				<li>
+					<p id="productName"></p>
+				</li>
+			</nav>		
+			<nav class="zbh_xq">
+				<li>
+					<p>开通时间</p>
+					<p id="openTime"></p>
+				</li>
+				<li>
+					<p>到期时间</p>
+					<p id="expireTime"></p>
+				</li>
+				<li>
+					<p>付费方式</p>
+					<p id="chargeType"></p>
+				</li>
+				<li>
+					<p>付费状态</p>
+					<p id="chargeStatus"></p>
+				</li>
+				<li>
+					<p>使用状态</p>
+					<p id="status"></p>
+				</li>
+			</nav>
+		</article>
+     </div>
+     <p class="has_title">该社群当前状态<p>
+     <div class="hasOpen_list_con">
+	     <dl class="pubFlex dl">
+		     <dt>
+		     	<img id="circleLogo" src="">
+		     </dt>
+		     <dd class="autoFlex pubFlex">
+			     <div class="autoFlex">
+				     <p class="oneline_text circleN" id="circleName"></p>
+				     <p class="oneline_text productN" id="creatorName"></p>
+			     </div>
+		     </dd>
+	     </dl>
+	</div>
+<script type="text/javascript" src="/statics/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/statics/js/mobile.js"></script>
+<script type="text/javascript" src="/statics/js/mobileCommon.js"></script>
+<script type="text/javascript" src="/statics/js/iscroll.js"></script>
+<script type="text/javascript" src="/statics/js/saleOrder/saleMain.js"></script>
+<script type="text/javascript" src="/statics/js/openLogs/openLogsDetails.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	window.hasOpenDetails.onLoad();
+});
+</script>
+</body>
+</html>

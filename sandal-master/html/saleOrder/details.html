@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />  
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>已开通的直播列表</title>
+	<link rel="stylesheet" type="text/css" href="/statics/css/mbase.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/saleOrder/sale.css" />
+	<script type="text/javascript" src="/statics/js/rem750.js"></script>
+</head>
+<body>
+	<p class="de_title">订单信息</p>
+	<ul class="fenrunBox_info">
+        <li><h2>订单名称</h2><p id="orderName"></p></li>
+        <li><h2>交易金额</h2><p id="orderPrice"></p></li>
+        <li><h2>支付方式</h2><p id="chargeType"></p></li>
+        <li><h2>付费状态</h2><p id="chargeState"></p></li>
+        <li><h2>订单单号</h2><p id="orderNo"></p></li>
+        <li><h2>开通时间</h2><p id="openTime"></p></li>
+        <li><h2>开通社群</h2><p id="circleName"></p></li>
+    </ul>
+<script type="text/javascript" src="/statics/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/statics/js/mobileCommon.js"></script>
+<script type="text/javascript" src="/statics/js/iscroll.js"></script>
+<script type="text/javascript" src="/statics/js/main.js"></script>
+<script type="text/javascript" src="/statics/js/saleOrder/saleDetails.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	CommonOper.init();
+	window.hasOpenDetails.onLoad();
+});
+</script>
+</body>
+</html>

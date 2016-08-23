@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />  
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/statics/css/mbase.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/promotion/promotion.css" />
+	<script type="text/javascript" src="/statics/js/rem750.js"></script>
+</head>
+<body>
+<article class="spreadSate">
+	<dl class="spreadSate_user pubFlex a_center">
+		<dt><img src="/statics/images/promotion/headPic.png"></dt>
+		<dd class="autoFlex"></dd>
+	</dl>
+	<ul class="spreadSate_num pubFlex">
+		<li>
+			<h3>直接销售额</h3>
+			<p id="earning">0</p>
+		</li>
+		<li>
+			<h3>累计分润</h3>
+			<p id="totalProfit">0</p>
+		</li>
+	</ul>
+</article> 
+<article class="spreadLevel">
+	<ul class="spreadParent">
+		<li>上级</li>
+		<li>
+			<dl class="spreadLevel_user pubFlex" id="spreadLevel_user">
+				<dt><img src="/statics/images/promotion/headPic.png"></dt>
+				<dd class="autoFlex oneline_text"></dd>
+			</dl>
+		</li>
+	</ul>
+	<ul class="spreadLower">
+		<li>直接下级</li>
+		<li id="spreadLower">0</li>
+	</ul>
+</article>
+<script type="text/javascript" src="/statics/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/statics/js/mobileCommon.js"></script>
+<script type="text/javascript" src="/statics/js/main.js"></script>
+<script type="text/javascript" src="/statics/js/lower/lowerPromDetail.js"></script>
+<script type="text/javascript">
+var userId = CommonOper.getQueryStringS('userId');
+var agentCode = CommonOper.getQueryStringS('agentCode');
+$(document).ready(function(){
+	window.lowerProDetail.onLoad();
+});
+</script>
+</body>
+</html>

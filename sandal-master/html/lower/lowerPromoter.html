@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />  
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>推广者</title>
+	<link rel="stylesheet" type="text/css" href="/statics/css/mbase.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/promotion/promotion.css" />
+	<script type="text/javascript" src="/statics/js/rem750.js"></script>
+</head>
+<body>
+	<!-- <header class="lowerPromSearch pubFlex">
+		<div class="lowerProm_search autoFlex pubFlex">
+			<input type="text" class="autoFlex" placeholder="输入社群号查找用户" name="keyword" id="keyword" value="">
+			<span class="search_del"></span>
+		</div>
+		<span class="search_cancle">取消</span>
+		<div class="search_img"></div>
+	</header> -->
+	<section class="lowerProm_iscroll" id="lowerProm_list" pageNo="1" pageSize="" count="0">
+		<div>
+			<div class="lowerProm_list_con" id="content"> 
+				<p class="load"><img src='/statics/images/loading.gif'/></p> 
+			</div>
+			<div id="pullUp" style="display:none">
+				<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载...</span>
+			</div>
+		</div>
+	</section>
+<script type="text/javascript" src="/statics/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/statics/js/mobileCommon.js"></script>
+<script type="text/javascript" src="/statics/js/iscroll.js"></script>
+<script type="text/javascript" src="/statics/js/main.js"></script>
+<script type="text/javascript" src="/statics/js/lower/lowerPromter.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	/* CommonOper.commonSearch("lowerPromSearch"); */ // 搜索 
+	window.lowerPromList.onLoad();
+});
+</script>
+</body>
+</html>

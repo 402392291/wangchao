@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" />  
+		<meta name="screen-orientation" content="portrait">
+    	<meta name="x5-orientation" content="portrait">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>直播号申请购买</title>
+		<link rel="stylesheet" type="text/css" href="../../css/mbase.css">
+		<link rel="stylesheet" type="text/css" href="../../css/liveCode/openLiveCode.css" />
+		<link rel="stylesheet" type="text/css" href="../../styls.css" />
+		<script type="text/javascript" src="../../js/rem750.js"></script>
+	</head>
+
+	<body class="dx_hui_bg">
+		<article id="userInfo" style="display:none;">
+			<article class="wx_set_tit">完善个人真实信息才能开通直播号</article>
+			<nav class="wx_set_info">
+				<li>
+					<p>姓名</p>
+					<p id="userName"></p>
+				</li>
+				<li>
+					<p>手机号</p>
+					<input type="text" id="tel" style="width:52%;" placeholder="请输入手机号，可用于登录掌门">
+					<a href="javascript:;" class="fa_song_btn qb" style="margin-left:10px;" onclick="setOpenLiveCodeInfo.send_ValidCode();" id="btn_validCode">发送验证码</a>
+				</li>
+				<li>
+					<p>验证码</p>
+					<input type="text"  id="validCode" placeholder="请输入验证码">					
+				</li>
+				<li>
+					<p>密码</p>
+					<input type="password" data-size="16|密码" onblur='strlen(this)' id="password" placeholder="请设置6-12位密码，用户手机登录密码">
+				</li>
+			</nav>
+		</article>
+		<nav class="wx_set_info" id="createCircle" style="margin-top: 0.2rem; display:none;">
+			<li>
+				<p>直播号名称</p>
+				<input type="text" id=circleName placeholder="请填写要开通增值服务的直播号" maxlength="20">
+			</li>
+		</nav>
+		<nav class="zbh_name" id="requestCode"  style="display:none;">
+			<li>
+				<p>邀请码</p>
+				<input type="text" id="setCode" placeholder="请填写营业厅的邀请码">
+				<p id="codeText"></p>
+			</li>
+		</nav>
+		<nav class="zbh_xq">
+			<li>
+				<p>直播号增值服务类型</p>
+				<p class="bold" id="productName"></p>
+			</li>
+			<li>
+				<p>价格</p>
+				<p id="productPrice"></p>
+			</li>
+			<li>
+				<p>使用时间</p>
+				<p id="productTime"></p>
+			</li>
+		</nav>
+		<article class="cpd_tit">选择支付方式</article>
+		<nav class="type_radio_list zbh_type">
+			<li>
+				<p>在线支付</p>
+				<a class="type_radio"></a>				
+			</li>
+			<li>
+				<p>线下支付</p>
+				<a class="type_radio"></a>				
+			</li>
+		</nav>
+		<div class="dx_xxzf_text openLCResult_point">
+		<p>
+        选择线下支付，可以直接打款到
+        <b>公司银行账户</b>
+公司名称：华科星汇（北京）科技有限公司<br>
+开户行：招商银行北京工体支行<br>
+开户行账号：110921273510901
+<b>公司支付宝账户</b>
+华科星汇（北京）科技有限公司<br>
+帐号：pay@gaiay.com.cn
+        </p>
+        <p>
+          <span id="pointCode"></span><a href="tel:4006-968-387">4006-968-387</a>
+<!--<p id="agentCode">或者联系你要开通直播号的营业厅: <a href="javascript:;"></a>（点击链接到营
+				业厅掌信）</p>-->
+        </p>
+		</div>
+		<a href="javascript:;" class="zx_blue_btn" id="zxBtn"><p>咨询客服</p></a>
+		<a href="javascript:;" class="dx_submit_btn">提交</a>
+		<div class="dx_submit_btn qbbb-in">咨询客服</div>
+		<script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../../js/mobile.js"></script>
+		<script type="text/javascript" src="../../js/mobileCommon.js"></script>
+		<script type="text/javascript" src="../../js/liveCode/spreadTools.js"></script>
+				<script type="text/javascript" src="../../js/md5.js"></script>
+		<script type="text/javascript" src="../../js/liveCode/setOpenLiveCodeInfo.js"></script>
+	</body>
+</html>

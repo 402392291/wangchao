@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />  
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>增值服务开通记录</title>
+	<link rel="stylesheet" type="text/css" href="/statics/css/mbase.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/saleOrder/sale.css" />
+	<link rel="stylesheet" type="text/css" href="/statics/css/openLogs/openLogs.css" />
+	<script type="text/javascript" src="/statics/js/rem750.js"></script>
+</head>
+<body>
+	<article class="hasOpenList_con">
+		<ul class="screenNav">
+			<li class="allType screenNav_li activeNav">
+				<span class="oneline_text">全部类型(0)</span>
+			</li>
+			<li class="allType_bg">
+				<ul class="allType_cont allType_li" style="display:none;">
+				</ul>
+			</li>
+		</ul>
+	</article>
+	<section class="hasOpenList_iscroll" id="hasOpen_list" pageNo="1" pageSize="" count="0">
+		<div>
+			<div class="hasOpen_list_con" id="content"> 
+				<p class="load"><img src='/statics/images/loading.gif'/></p> 
+			</div>
+			<div id="pullUp" style="display:none">
+				<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载...</span>
+			</div>
+		</div>
+	</section>
+<script type="text/javascript" src="/statics/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/statics/js/mobileCommon.js"></script>
+<script type="text/javascript" src="/statics/js/iscroll.js"></script>
+<script type="text/javascript" src="/statics/js/saleOrder/saleMain.js"></script>
+<script type="text/javascript" src="/statics/js/openLogs/openLogsList.js"></script>
+<script type="text/javascript">
+var userId = CommonOper.getQueryStringS('userId');
+var agentCode = CommonOper.getQueryStringS('agentCode');
+$(document).ready(function(){
+	CommonOper.init();
+	window.hasOpenList.onLoad();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />  
+	<meta name="screen-orientation" content="portrait">
+   	<meta name="x5-orientation" content="portrait">
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>推广直播号</title>
+	<link rel="stylesheet" type="text/css" href="../../css/mbase.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/promotion/promotion.css" />
+	<script src="../../js/rem750.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../../js/jquery-2.1.1.min.js" ></script>
+	<script type="text/javascript" src="/statics/js/mobileCommon.js"></script>
+	<script src="/statics/js/common_quote.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/statics/js/main.js"></script>
+	<script src="/statics/js/promotion/promotion.js" type="text/javascript"></script>
+</head>
+<body>
+	<header></header>
+	<article class="directiorProm_cont">
+		<h2 class="directiorProm_tit">
+			<var class="directiorProm_titBord"><span>推广资源</span></var>
+		</h2>
+		<dl class="pubFlex directiorProm_list">
+			<dt class="oneline_text" id="directior_list">直播号列表</dt>
+			<dd class="autoFlex">
+				<span class="qRCode" id="directior_qRCode">二维码</span>
+				<span class="share" id="directior_list_share">分享</span>
+			</dd>
+		</dl>
+	</article>
+</body>
+<script type="text/javascript">
+var followerId = CommonOper.getQueryStringS("followerId");
+var userId = CommonOper.getQueryStringS("userId");
+var agentCode = CommonOper.getQueryStringS("agentCode");
+$(document).ready(function(){
+	window.commonQuoteJs.init();
+	window.promotion.initDirectorProm();
+});
+</script>
+</html>

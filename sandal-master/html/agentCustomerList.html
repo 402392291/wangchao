@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" />  
+		<meta name="screen-orientation" content="portrait">
+    	<meta name="x5-orientation" content="portrait">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title id="customerTitle">待开通用户</title>
+		<link rel="stylesheet" type="text/css" href="../css/mbase.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<style type="text/css">
+			.none_style{display:none;}
+			.list_circle{top:8.4rem;}
+		</style>
+		<script type="text/javascript" src="../js/jquery-2.1.1.min.js" ></script>
+		<script type="text/javascript" src="../js/iscroll.js" ></script>
+		<script type="text/javascript" src="../js/mobileCommon.js" ></script>
+		<script type="text/javascript" src="../js/rem.js"></script>
+		<script type="text/javascript">
+			var agentCode = getQueryString("agentCode");
+			var state = getQueryString("state");
+			var productId = getQueryString("productId");
+		</script>
+	</head>
+	<body>
+		<article class="content">
+			<article>
+					<article class="d_ss_top">
+						<section class="ss_input">
+							<input type="text" id="keyword" name="keyword" placeholder="输入社群号查找用户" />
+							<a class="close_btn"></a>
+							<a class="d_ss_btn">取消</a>
+						</section>				
+					</article>
+					<article class="my_kh_top none_style" id="statePartALL" style="margin-top:4.4rem;" >
+						<section class="my_kh_select" value="1" id="stateShow">全部已开通用户</section>
+						<nav class="my_kh_select_text" id="stateList">
+							<li><p class="selected" onclick="toState('1')">全部已开通用户</p></li>
+							<li><p onclick="toState('3')">已付费</p></li>
+							<li><p onclick="toState('2')">未付费</p></li>
+							<li><p onclick="toState('4')">暂停使用</p></li>
+<!-- 							<li><p onclick="toState('5')">已锁定</p></li> -->
+						</nav>
+					</article>
+				<article id="contentList" style="width:100%;height:62.3rem;position:relative;top:4.4rem;left:0px;">
+					<section id="onePage" style="width:100%;height:100%;position:absolute;top:0;left:0px;overflow:hidden;">
+						<section>
+							<nav class="d_czkh_list" id="customerList">
+								
+							</nav>	
+						</section>
+					</section>
+				</article>
+			</article>
+			<article class="bang_no" style="display: none;" id="bang_no"></article>
+			<article class="backBg"></article>
+		</article>
+		<script src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/agent/agent.js"></script>
+		<script type="text/javascript" src="../js/agent/agentCustomer.js"></script>
+	  	<script type="text/javascript">
+	  	if("1"==state || "2"==state || "3"==state || "4"==state || "5"==state){//已开通，显示搜索条件
+	  		$("#customerTitle").html("已开通客户");
+			$("#statePartALL").removeClass("none_style");
+			$("#contentList").css("top","8.4rem");
+			$("#contentList").css("height","58.3rem");
+			/*
+			<li><p class="selected" value="1">全部开通用户</p></li>
+			<li><p value="2">已付费</p></li>
+			<li><p value="3">未付费</p></li>
+			<li><p value="4">暂停使用</p></li>
+			<li><p value="5">已锁定</p></li>
+			*/
+			
+			//各种状态
+			//1.收费状态 1：未交费，2：已缴费		【no(1), charge(2);】
+			if("3"==state){
+				var liPObj = $("#stateList li:nth-child(3) p");
+				liPObj.addClass("selected").parent("li").siblings().find("p").removeClass("selected");
+				$("#stateShow").html(liPObj.html());
+			}
+			else if("2"==state){
+				var liPObj = $("#stateList li:nth-child(2) p");
+				liPObj.addClass("selected").parent("li").siblings().find("p").removeClass("selected");
+				$("#stateShow").html(liPObj.html());
+			}
+			//2.锁定状态：1 未锁定；2 锁定      		【no(1), lock(2);】
+			else if("4"==state){
+				var liPObj = $("#stateList li:nth-child(5) p");
+				liPObj.addClass("selected").parent("li").siblings().find("p").removeClass("selected");
+				$("#stateShow").html(liPObj.html());
+			}	
+			//3.封号=暂停使用
+			else if("5"==state){
+				var liPObj = $("#stateList li:nth-child(4) p");
+				liPObj.addClass("selected").parent("li").siblings().find("p").removeClass("selected");
+				$("#stateShow").html(liPObj.html());
+			}			
+		}
+	  	var pageNo = 1;//当前第几页
+	  	var pageSize = 8;//每页记录数
+	  	var isLast = false;//是否是最后，false=不是最后页，true=是最后页
+  		var isLoading = true;//上次加载已完成
+  		
+  		//加载更多,需要iscroll.js
+	  	var oneScroll_refresh = new iScroll('onePage', {
+	  		useTransition: true,
+	  		onScrollEnd: function () {	
+	  			if(!isLast && isLoading){//没有到最后一页时加载
+	  	   			isLoading = false;
+	  	   			getCustomerListData();
+	  	   		}
+	  		}
+	  	});
+  		
+	  	$(function() {
+	  		CommonOper.search(seachCircle);//社群搜索
+	  		
+	  		$('.kh_fh_btn').bind('click',function(){
+	  			$('.win_prompt,.backBg').show();
+	  			$('.my_kh_top').css('z-index','0');
+	  		});
+	  		$('.win_prompt .cancel').bind('click',function(){
+	  			$('.win_prompt,.backBg').hide();
+	  			$('.my_kh_top').css('z-index','998');
+	  		});
+	  		$('.win_prompt .confirm').bind('click',function(){
+	  			$('.win_prompt,.backBg').hide();
+	  			$('.my_kh_top').css('z-index','998');
+	  		});
+	  		$('.my_kh_select').bind('click',function(){
+	  			$('.backBg,.my_kh_select_text').show();
+	  		});
+	  		$('.my_kh_select_text li').bind('click',function(){
+	  			$(this).children().addClass('selected').parent().siblings().children().removeClass('selected');
+	  			var select_html = $(this).children().html();
+	  			var select_value = $(this).children().attr('value');
+	  			$('.my_kh_select').html(select_html);
+	  			$('.my_kh_select').attr('value',select_value);
+	  			$('.backBg,.my_kh_select_text').hide();
+	  		});
+	  		
+	  		getCustomerListData();
+	  	});
+  		
+	  	//用户列表动态数据
+	  	function getCustomerListData(circleCode,isRefresh){
+	  		var link = ctx+ "custom/customerList?agentCode="+agentCode+"&pageNo="+pageNo+"&pageSize="+pageSize;
+	  		if(null!=state && "null"!=state){
+	  			link += "&state="+state;
+	  		}
+	  		if(null!=productId && "null"!=productId){
+	  			link += "&productId="+productId;
+	  		}
+	  		if("undefined"!=typeof(circleCode) && null!=circleCode && ""!=circleCode){
+	  			link += "&circleCode="+circleCode;
+	  		}
+	  		$.ajax({
+		  	      type : "GET",
+		  	      url : link,
+		  	      dateType : "jsonp",
+		  	      success : function(dataJson) {
+			  	    	if(1==pageNo){
+	        				$("#bang_no").fadeOut();
+	        			}
+			  	    	var res = dataJson;
+				        if (res.code == -1){//获取数据失败
+				          return;
+				        }
+				        if(isRefresh){
+				        	$("#customerList").html("");
+				        }
+		  	    	  
+				      	//成功,列表
+			  	  		var productList = res.result.productList;//只有第一次才有产品列表
+				  	  	if(null!=productList && productList.length>0){
+				  	  		productL =new Map(); 
+				  	  		for(var z=0;z<productList.length;z++){
+				  	  			var product = productList[z];
+				  	  			if(null!=product && ""!=product.id){
+				  	  				productL.put(product.id,product); 
+				  	  			}
+				  	  		}
+		        		}
+			  	  		
+			  	  		var circleProfileMap = res.result.circleProfileMap;
+		  	    	  
+			  	  	 	var itemList = res.result.page.result;
+				        var totalPages = 1;//总页数
+				        if(null!=itemList && itemList.length>0){
+				        	totalPages = res.result.page.totalPages;//总页数
+				        	var html = "";
+				        	for(var i=0;i<itemList.length;i++){
+				        		var customer = itemList[i];
+				        		customerObj.id = customer.id;
+				        		customerObj.agentCode = customer.agentCode;
+				        		customerObj.chargeStatus = customer.chargeStatus;
+				        		customerObj.lockStatus = customer.lockStatus;
+				        		customerObj.status = customer.status;
+				        		customerObj.bindTime = customer.bindTime;
+				        		
+				        		//产品
+				        		customerObj.productId = customer.productId;
+				        		if(null!=productL){
+				        			var thisId = customer.productId;
+			        				if("undefined"!=typeof(customer.productId) && ""!=customer.productId && null!=customer.productId){
+			        					thisId = parseInt(customer.productId);
+				        				if(null!=productL.get(thisId)){
+					        				customerObj.pName = productL.get(thisId).name;
+				        				}
+			        				}else{
+			        					customerObj.pName = "";
+			        				}
+			        			}
+				        		
+				        		//群信息
+				        		customerObj.circleId = customer.circleId;
+				        		customerObj.circleCode = customer.circleCode;
+				        		if(null!=circleProfileMap){
+				        			if(customer.circleId in circleProfileMap){//是否存在
+				        				var circleProfile = circleProfileMap[customer.circleId];
+				        				customerObj.circleName = circleProfile.name;
+				        				customerObj.circleLogo = circleProfile.logo;
+				        			}else{
+				        				//TODO 社群解散或删除了，以后需要处理
+				        				customerObj.circleName = "";
+				        				customerObj.circleLogo = "";
+				        			}
+				        		}
+				        		html += getCustomerListHtml(customerObj);
+				        	}
+				        	$("#customerList").append(html);
+				        }else{
+				        	if(1==pageNo){
+		        				$("#bang_no").fadeIn();
+		        			}
+		        		}
+				        oneScroll_refresh.refresh();//滚动条刷新
+				        
+				      	//是否到底
+				        if(pageNo==totalPages){
+				        	isLast = true;
+				        }else{
+				        	pageNo = pageNo+1;
+				        }
+				        isLoading = true;
+		  	      },
+		  	      error : function(data) {	 
+		  	    	isLoading = true;
+		  	      }
+	  		});
+	  	}
+	  	//搜索查询
+	  	function seachCircle(circleCode) {
+	  		pageNo = 1;//当前第几页,从第一页开始查
+		  	isLast = false;//是否是最后，false=不是最后页，true=是最后页
+	  		isLoading = true;//上次加载已完成
+	  		getCustomerListData(circleCode,true);
+	  	}
+	   //点击状态，查询
+	   function toState(stateS){
+		   state = stateS;
+		   
+		    pageNo = 1;//当前第几页,从第一页开始查
+		  	isLast = false;//是否是最后，false=不是最后页，true=是最后页
+	  		isLoading = true;//上次加载已完成
+	  		
+	  		seachCircle($("#keyword").val());
+	   }
+	   //回车事件捕捉
+	   document.onkeypress = function (e) {
+           var code;
+           if (!e) {
+             e = window.event;
+           }
+           if (e.keyCode) {
+               code = e.keyCode;
+           }
+           else if (e.which) {
+               code = e.which;
+           }
+           if (code == 13) {
+        	   seachCircle($("#keyword").val());//查询操作
+           }
+       }
+	  	</script>
+	</body>
+</html>

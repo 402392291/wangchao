@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" />  
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<title>推广直播号</title>
+		<link rel="stylesheet" type="text/css" href="/statics/css/mbase.css">
+		<link rel="stylesheet" type="text/css" href="/statics/css/promotion/promotion.css" />
+		<script type="text/javascript" src="/statics/js/rem750.js"></script>
+		
+	</head>
+
+	<body class="dx_lcl_bg">
+		<div class="dx_top_hello">
+			<img src="../../images/liveCode/headPic.png" class="dx_th_logo" />
+			<div class="dx_th_text">
+				<img src="../../images/liveCode/dx_icon_01.png" />
+				<h3>hi，我是<span class="dx_th_Name"></span></h3>
+				<p>现在是全民直播的时代了，我已经在掌门中开了直播号，你也赶紧开一个直播号吧！</p>
+			</div>
+		</div>
+		<div class="dx_yx_pic">
+			<img src="" />
+			<p>分享快乐，记录美好时刻</p>
+		</div>
+<!-- 		<div class="dx_lcd_video">
+			<video src=""></video>
+		</div> -->
+		<div class="dx_lcd_title">
+			<div class="dx_title_con">
+				<p>直播号介绍</p>
+			</div>
+		</div>
+		<div class="dx_lcd_recommend">
+		</div>
+		<div class="share_btns">
+			<a href="javascript:;" id="shareBtn">分享</a>
+			<a href="javascript:;" id="shengchengBtn">生成二维码</a>
+		</div>
+		<script type="text/javascript" src="/statics/js/jquery-2.1.1.min.js"></script>
+		<script src="/statics/js/common_quote.js" type="text/javascript"></script>
+		<script type="text/javascript" src="/statics/js/mobileCommon.js"></script>
+	</body>
+		<script src="/statics/js/promotion/promotion.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var productId = getQueryString("productId");
+			var followerId = getQueryString("followerId");
+			$(document).ready(function(){
+				window.commonQuoteJs.init();
+				window.promotion.initpromDetails();
+			});
+		</script>
+</html>
